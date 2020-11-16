@@ -24,33 +24,46 @@ class PrefixTreeNode:
     def is_terminal(self):
         """Return True if this prefix tree node terminates a string."""
         # TODO: Determine if this node is terminal
+        return self.terminal
 
     def num_children(self):
         """Return the number of children nodes this prefix tree node has."""
         # TODO: Determine how many children this node has
+        # manipulate the properties we already have!!!
+        return len(self.children)
 
     def has_child(self, character):
         """Return True if this prefix tree node has a child node that
         represents the given character amongst its children."""
         # TODO: Check if given character is amongst this node's children
+        # manipulate the properties we already have!!!
+        if self.num_children() > 0:    # if there are children
+            for child in self.children:    # loop through the children
+                if child.character == character:     # compare the content of the child node by using child.character
+                    return True     # if it is the character, then return true
+        return False     # returns false if there are zero children
 
     def get_child(self, character):
         """Return this prefix tree node's child node that represents the given
         character if it is amongst its children, or raise ValueError if not."""
         if self.has_child(character):
             # TODO: Find child node for given character in this node's children
-            ...
+            for child in self.children:
+                if child.character == character:   
+                    return child     # return the node that contains the character
         else:
             raise ValueError(f'No child exists for character {character!r}')
+        # manipulate the properties we already have!!!
 
     def add_child(self, character, child_node):
         """Add the given character and child node as a child of this node, or
         raise ValueError if given character is amongst this node's children."""
         if not self.has_child(character):
             # TODO: Add given character and child node to this node's children
-            ...
+            self.children.append(child_node)
         else:
             raise ValueError(f'Child exists for character {character!r}')
+        # manipulate the properties we already have!!!
 
     def __repr__(self):
         """Return a code representation of this prefix tree node."""
