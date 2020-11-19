@@ -45,6 +45,15 @@ class PrefixTree:
         """Insert the given string into this prefix tree."""
         # TODO
 
+        current = self.root          # always begin with creating a variable called current and set it to the root
+        for i in range(len(string)):       #  then traverse through the string to check if an element is in the string or not
+            if not current.has_child(string[i]):    # if current does not have children
+                new_node = PrefixTreeNode(string[i])          # then insert new node with current character in string, create a new node 
+                current.add_child(string[i], new_node)        # add it as a child of a node
+            current = current.get_child(string[i])    # if there is a child, the child is the letter of the string so current = that child
+
+        current.terminal = True   # when I am at the end of the string(word), I want to make the last character terminal
+
     def _find_node(self, string):
         """Return a pair containing the deepest node in this prefix tree that
         matches the longest prefix of the given string and the node's depth.

@@ -53,7 +53,6 @@ class PrefixTreeNode:
                     return child     # return the node that contains the character
         else:
             raise ValueError(f'No child exists for character {character!r}')
-        # manipulate the properties we already have!!!
 
     def add_child(self, character, child_node):
         """Add the given character and child node as a child of this node, or
@@ -63,7 +62,6 @@ class PrefixTreeNode:
             self.children.append(child_node)
         else:
             raise ValueError(f'Child exists for character {character!r}')
-        # manipulate the properties we already have!!!
 
     def __repr__(self):
         """Return a code representation of this prefix tree node."""
